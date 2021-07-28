@@ -8,6 +8,23 @@ import BaseComponent from './common/base';
 import { InputProps, ICredentials } from './common/entity';
 import get from 'lodash.get';
 import { putKeyValue, listKeyValue, getKeyValue, deleteKeyValue } from './common/request';
+
+// const CONTENT_TYPE_MAP = {
+//   'html': 'text/html; charset=UTF-8',
+//   'text': 'text/plain; charset=UTF-8',
+//   'xml': 'text/xml; charset=UTF-8',
+//   'gif': 'image/gif; charset=UTF-8',
+//   'jpg': 'image/jpeg; charset=UTF-8',
+//   'jpeg': 'image/jpeg; charset=UTF-8',
+//   'png': 'image/png; charset=UTF-8',
+//   'svg': 'image/svg+xml; charset=UTF-8',
+//   'xhtml': 'application/xhtml+xml; charset=UTF-8',
+//   'json': 'application/json; charset=UTF-8',
+//   'pdf': 'application/pdf; charset=UTF-8',
+//   'js': 'application/javascript; charset=UTF-8',
+//   'css': 'text/css; charset=UTF-8'
+// }
+
 export default class ComponentDemo extends BaseComponent {
   constructor(props) {
     super(props);
@@ -30,19 +47,19 @@ export default class ComponentDemo extends BaseComponent {
    * @returns
    */
   public async put(inputs: InputProps) {
-    const { args = '', credentials, project } = inputs;
+    const { argsObj = [], credentials, project } = inputs;
     await this.setEnv(credentials, project.access);
-    const argsArr = args.split(/\s/);
-    const othersParams = argsArr.slice(2);
-    let [key, value = ''] = argsArr.slice(0, 2);
+    const othersParams = argsObj.slice(2);
+    let [key, value = ''] = argsObj.slice(0, 2);
     let domain = '';
-    if (fs.existsSync(value)) {
-      value = fs.readFileSync(value, 'utf-8');
-    }
     if (!key) {
       throw new Error('请输入 key');
     }
-    if (!value || value.indexOf('-') === 0) {
+    let type = path.extname(key).substr(1);
+    if (fs.existsSync(value)) {
+      value = fs.readFileSync(value, 'utf-8');
+    }
+    if (!value) {
       throw new Error('请输入 value （value 可以为具体的文件路径）');
     }
 
@@ -64,7 +81,16 @@ export default class ComponentDemo extends BaseComponent {
         throw new Error('检测到当前没有domain配置，您可以通过-d <domain> 指定');
       }
     }
-    await putKeyValue({ domain, key, value });
+    if (type === 'json') {
+      try {
+        value = JSON.parse(value);
+      } catch (e) {
+
+      }
+    } else {
+      type = 'text/plain';
+    }
+    await putKeyValue({ domain, key, value, type });
     return '创建/更新成功';
   }
   /**
@@ -174,5 +200,76 @@ export default class ComponentDemo extends BaseComponent {
     await deleteKeyValue({ domain, key });
 
     return '删除成功';
+  }
+
+  /**
+   * 配合配置文件进行上传
+   * @param inputs 
+   * @returns
+   */
+  public async deploy(inputs: InputProps) {
+    const { credentials, project, props } = inputs;
+    await this.setEnv(credentials, project.access);
+    let { key, value = '', domain } = props;
+    let type = 'text/plain';
+    value = path.join(process.cwd(), value);
+    if (fs.existsSync(value)) {
+      let fileType = path.extname(value).substr(1);
+      type = fileType;
+      value = fs.readFileSync(value, 'utf-8');
+    }
+    if (!key) {
+      throw new Error('请填写 key');
+    }
+    if (!value) {
+      throw new Error('请填写 value （value 可以为具体的文件路径）');
+    }
+
+    if (!domain) { // 如果有配置文件，则去解析配置文件path
+      throw new Error('请输入domain');
+    }
+    if (type === 'json') {
+      value = JSON.parse(value);
+    }
+    await putKeyValue({ domain, key, value, type });
+    return '创建/更新成功';
+  }
+  /**
+   * api 主动创建key value
+   * @param param0 
+   */
+  public async putApi({ domain, key, value, type, credentials }) {
+    process.env.accessKey = credentials.AccessKeyID;
+    process.env.accessSecret = credentials.AccessKeySecret;
+    return await putKeyValue({ domain, key, value, type });
+  }
+
+  /**
+  * api 获取具体的key
+  * @param param0 
+  */
+  public async getApi({ domain, key, credentials }) {
+    process.env.accessKey = credentials.AccessKeyID;
+    process.env.accessSecret = credentials.AccessKeySecret;
+    return await getKeyValue({ domain, key });
+  }
+
+  /**
+* api 查看key 列表
+* @param param0 
+*/
+  public async listApi({ domain, credentials }) {
+    process.env.accessKey = credentials.AccessKeyID;
+    process.env.accessSecret = credentials.AccessKeySecret;
+    return await listKeyValue({ domain });
+  }
+  /**
+  * api 主动删除key value
+  * @param param0 
+  */
+  public async deleteApi({ domain, key, credentials }) {
+    process.env.accessKey = credentials.AccessKeyID;
+    process.env.accessSecret = credentials.AccessKeySecret;
+    return await deleteKeyValue({ domain, key });
   }
 }

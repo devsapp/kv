@@ -1,6 +1,6 @@
 {
 	"id": 0,
-	"name": "kv",
+	"name": "@serverless-devs/kv",
 	"kind": 0,
 	"kindString": "Project",
 	"flags": {},
@@ -56,7 +56,7 @@
 					}
 				},
 				{
-					"id": 21,
+					"id": 36,
 					"name": "client",
 					"kind": 1024,
 					"kindString": "Property",
@@ -66,7 +66,7 @@
 					"sources": [
 						{
 							"fileName": "common/base.ts",
-							"line": 14,
+							"line": 15,
 							"character": 20
 						}
 					],
@@ -80,7 +80,7 @@
 					}
 				},
 				{
-					"id": 22,
+					"id": 37,
 					"name": "inputs",
 					"kind": 1024,
 					"kindString": "Property",
@@ -97,7 +97,7 @@
 					}
 				},
 				{
-					"id": 25,
+					"id": 40,
 					"name": "__doc",
 					"kind": 2048,
 					"kindString": "Method",
@@ -105,20 +105,20 @@
 					"sources": [
 						{
 							"fileName": "common/base.ts",
-							"line": 39,
+							"line": 40,
 							"character": 9
 						}
 					],
 					"signatures": [
 						{
-							"id": 26,
+							"id": 41,
 							"name": "__doc",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
 							"parameters": [
 								{
-									"id": 27,
+									"id": 42,
 									"name": "projectName",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -147,7 +147,7 @@
 					}
 				},
 				{
-					"id": 23,
+					"id": 38,
 					"name": "__getBasePath",
 					"kind": 2048,
 					"kindString": "Method",
@@ -155,13 +155,13 @@
 					"sources": [
 						{
 							"fileName": "common/base.ts",
-							"line": 26,
+							"line": 27,
 							"character": 17
 						}
 					],
 					"signatures": [
 						{
-							"id": 24,
+							"id": 39,
 							"name": "__getBasePath",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -192,7 +192,7 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 146,
+							"line": 172,
 							"character": 21
 						}
 					],
@@ -235,6 +235,110 @@
 					]
 				},
 				{
+					"id": 33,
+					"name": "deleteApi",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 270,
+							"character": 24
+						}
+					],
+					"signatures": [
+						{
+							"id": 34,
+							"name": "deleteApi",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "api 主动删除key value"
+							},
+							"parameters": [
+								{
+									"id": 35,
+									"name": "__namedParameters",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "Object"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "any"
+									}
+								],
+								"name": "Promise"
+							}
+						}
+					]
+				},
+				{
+					"id": 21,
+					"name": "deploy",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 210,
+							"character": 21
+						}
+					],
+					"signatures": [
+						{
+							"id": 22,
+							"name": "deploy",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "配合配置文件进行上传",
+								"returns": "\n"
+							},
+							"parameters": [
+								{
+									"id": 23,
+									"name": "inputs",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {},
+									"type": {
+										"type": "reference",
+										"name": "InputProps"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "string"
+									}
+								],
+								"name": "Promise"
+							}
+						}
+					]
+				},
+				{
 					"id": 15,
 					"name": "get",
 					"kind": 2048,
@@ -245,7 +349,7 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 109,
+							"line": 135,
 							"character": 18
 						}
 					],
@@ -288,6 +392,57 @@
 					]
 				},
 				{
+					"id": 27,
+					"name": "getApi",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 251,
+							"character": 21
+						}
+					],
+					"signatures": [
+						{
+							"id": 28,
+							"name": "getApi",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "api 获取具体的key"
+							},
+							"parameters": [
+								{
+									"id": 29,
+									"name": "__namedParameters",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "Object"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "any"
+									}
+								],
+								"name": "Promise"
+							}
+						}
+					]
+				},
+				{
 					"id": 12,
 					"name": "list",
 					"kind": 2048,
@@ -298,7 +453,7 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 75,
+							"line": 101,
 							"character": 19
 						}
 					],
@@ -341,6 +496,57 @@
 					]
 				},
 				{
+					"id": 30,
+					"name": "listApi",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 261,
+							"character": 22
+						}
+					],
+					"signatures": [
+						{
+							"id": 31,
+							"name": "listApi",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "api 查看key 列表"
+							},
+							"parameters": [
+								{
+									"id": 32,
+									"name": "__namedParameters",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "Object"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "any"
+									}
+								],
+								"name": "Promise"
+							}
+						}
+					]
+				},
+				{
 					"id": 9,
 					"name": "put",
 					"kind": 2048,
@@ -351,7 +557,7 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 32,
+							"line": 49,
 							"character": 18
 						}
 					],
@@ -394,6 +600,57 @@
 					]
 				},
 				{
+					"id": 24,
+					"name": "putApi",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 241,
+							"character": 21
+						}
+					],
+					"signatures": [
+						{
+							"id": 25,
+							"name": "putApi",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "api 主动创建key value"
+							},
+							"parameters": [
+								{
+									"id": 26,
+									"name": "__namedParameters",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "Object"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "any"
+									}
+								],
+								"name": "Promise"
+							}
+						}
+					]
+				},
+				{
 					"id": 5,
 					"name": "setEnv",
 					"kind": 2048,
@@ -404,7 +661,7 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 15,
+							"line": 32,
 							"character": 22
 						}
 					],
@@ -466,20 +723,25 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						21,
-						22
+						36,
+						37
 					]
 				},
 				{
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						25,
-						23,
+						40,
+						38,
 						18,
+						33,
+						21,
 						15,
+						27,
 						12,
+						30,
 						9,
+						24,
 						5
 					]
 				}
@@ -487,7 +749,7 @@
 			"sources": [
 				{
 					"fileName": "index.ts",
-					"line": 11,
+					"line": 28,
 					"character": 34
 				}
 			],

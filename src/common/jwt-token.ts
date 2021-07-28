@@ -33,7 +33,7 @@ export function getUploadUrl(payload) {
 }
 export default async (url, payload?: any) => {
     payload = payload || {};
-    const { type = 'text/plain' } = payload;
+    const { type = 'text' } = payload;
     const jwtToken = jwt.sign(getPayload(payload), process.env.accessSecret, {
         algorithm: 'HS256',
     });

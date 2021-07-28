@@ -8,6 +8,7 @@ const methodParamsMap = {
     'get': '<key> [? -d <domain> -a <accessAlias>]',
     'list': '-d [? <domain> -a <accessAlias>]',
     'put': '<key> <value>(可指定为文件路径) [? -d <domain> -a <accessAlias>]'
+
 }
 export default class BaseComponent {
 
@@ -94,7 +95,7 @@ export default class BaseComponent {
                 const params = get(item, 'signatures[0].parameters[0]', {});
                 const paramText = get(params, 'comment.text', '');
                 rows.push(
-                    [item.name, get(item, 'signatures[0].comment.shortText', ''), paramText, `${cliStr} ${item.name} ${methodParamsMap[item.name]}`]
+                    [item.name, get(item, 'signatures[0].comment.shortText', ''), paramText, `${cliStr} ${item.name} ${methodParamsMap[item.name] || ''}`]
                 );
             })
 

@@ -22,6 +22,7 @@ export interface InputProps {
     };
     command: string;
     args: string;
+    argsObj: string[];
     path: {
         configPath: string;
     };
