@@ -34,11 +34,10 @@ Jamstack有两者使用方式，一种是s命令行方式，另外一种是通�
 ### s cli 方式
 
 ```
-s cli kv put <key> <value> -d <domain> // 设置 <domain> 下的 kv,value 可以指定为文件
+s cli kv put <key> <value> -d <domain> // 创建/更新<domain>下的 kv,value 可以指定为文件
 s cli kv get <key> -d <domain> // 获取 <domain>下的 kv,value 可以指定为文件
 s cli kv delete <key> -d <domain> // 删除 <domain>下的 kv,value 可以指定为文件
-
-s cli kv list -d <domain> // 获取domain 下的 kv
+s cli kv list -d <domain> // 获取<domain>下的 kv
 ```
 
 ### REST API集成
