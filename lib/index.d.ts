@@ -28,6 +28,11 @@ export default class ComponentDemo extends BaseComponent {
      */
     delete(inputs: InputProps): Promise<string>;
     /**
+     *
+     * @param inputs
+     */
+    token(inputs: InputProps): Promise<any>;
+    /**
      * 配合配置文件进行上传
      * @param inputs
      * @returns

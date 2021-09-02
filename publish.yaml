@@ -1,10 +1,13 @@
 Type: Component
 Name: kv
-Provider:
-  - 其它
-Version: 0.0.14
-Description: 初始化component模板
-HomePage: https://www.serverless-devs.com
-Tags: #标签详情
-  - 模板
-Category: 其它
+Version: 0.0.15
+Category: 云应用
+HomePage: 'https://www.serverless-devs.com'
+Tags:
+  - jamstack
+  - kvstore
+  - Web框架
+Description: jamstack 的 kv store 存储
+Commands:
+  deploy: 部署
+Properties: {}
