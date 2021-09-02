@@ -11,7 +11,7 @@ import get from 'lodash.get';
 import { deleteKeyValue, getKeyValue, getToken, listKeyValue, putKeyValue } from './common/request';
 
 function getKeyContentType(key: string) {
-  return mime.getType(key) || 'application/octet-stream';
+  return mime.getType(key) || 'text/plain';
 }
 
 function getDomain(othersParams: string[]) {

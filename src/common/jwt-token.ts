@@ -33,7 +33,7 @@ export function getUploadUrl(payload) {
 
 export default async (url, payload?: any) => {
     payload = payload || {};
-    const { type = 'text' } = payload;
+    const { type = 'text/plain' } = payload;
     const jwtToken = jwt.sign(getPayload(payload), process.env.accessSecret, {
         algorithm: 'HS256',
     });
@@ -41,7 +41,7 @@ export default async (url, payload?: any) => {
         method: payload.method || 'GET',
         headers: {
             Host,
-            'Content-Type': type === 'json' ? 'application/json' : 'text/plain',
+            'Content-Type': type,
             Authorization: `bear ${jwtToken}`,
         },
         body: payload.body ? JSON.stringify(payload.body) : undefined
