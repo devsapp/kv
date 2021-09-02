@@ -3,7 +3,6 @@ import jwt from 'jsonwebtoken';
 import _ from 'lodash';
 import nodeFetch from 'node-fetch';
 
-
 const Host = 's.devsapp.cn';
 
 const now = Math.floor(Date.now() / 1000);
@@ -21,16 +20,17 @@ const getPayload = (payload?: any) => {
         return defaultPayload;
     }
 };
+
 export function getJwtoken(payload) {
-    const jwtToken = jwt.sign(getPayload(payload), process.env.accessSecret, {
-        algorithm: 'HS256',
+    return jwt.sign(getPayload(payload), process.env.accessSecret, {
+      algorithm: 'HS256',
     });
-    return jwtToken;
 }
 
 export function getUploadUrl(payload) {
     return 'https://' + path.join(`${Host}`, `/object/${payload.domain}/${payload.appName}/${payload.fileName}`);
 }
+
 export default async (url, payload?: any) => {
     payload = payload || {};
     const { type = 'text' } = payload;
