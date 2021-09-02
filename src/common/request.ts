@@ -1,7 +1,10 @@
 import getJwtToken from './jwt-token';
 
 
-
+export const getToken = async (payload) => getJwtToken(`/project/kvtoken/${payload.domain}`, {
+    ...payload,
+    method: 'GET',
+})
 export const listKeyValue = async (payload) =>
     getJwtToken(`/kv/keys/${payload.domain}`, {
         ...payload,
@@ -18,7 +21,7 @@ export const putKeyValue = async (payload) =>
         method: 'POST',
         ...payload,
         body: payload.value,
-        
+
     });
 export const deleteKeyValue = async (payload) =>
     getJwtToken(`/kv/delete/${payload.domain}/${payload.key}`, {

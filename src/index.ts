@@ -7,7 +7,7 @@ import BaseComponent from './common/base';
 // import logger from './common/logger';
 import { InputProps, ICredentials } from './common/entity';
 import get from 'lodash.get';
-import { putKeyValue, listKeyValue, getKeyValue, deleteKeyValue } from './common/request';
+import { putKeyValue, listKeyValue, getKeyValue, deleteKeyValue, getToken } from './common/request';
 
 // const CONTENT_TYPE_MAP = {
 //   'html': 'text/html; charset=UTF-8',
@@ -100,6 +100,7 @@ export default class ComponentDemo extends BaseComponent {
    */
   public async list(inputs: InputProps) {
     const { args = '', credentials, project } = inputs;
+
     await this.setEnv(credentials, project.access);
     const argsArr = args.split(/\s/);
     const othersParams = argsArr.slice(2);
@@ -200,6 +201,43 @@ export default class ComponentDemo extends BaseComponent {
     await deleteKeyValue({ domain, key });
 
     return '删除成功';
+  }
+
+  /**
+   * 
+   * @param inputs 
+   */
+  public async token(inputs: InputProps) {
+    const { argsObj = [], credentials, project } = inputs;
+    await this.setEnv(credentials, project.access);
+    let domain = '';
+
+    if (argsObj.includes('-d')) {
+      const domainTagIndex = argsObj.indexOf('-d');
+      domain = argsObj[domainTagIndex + 1];
+      if (!domain) {
+        throw new Error('请指定domain');
+      }
+    } else {
+      const sPath = path.join(process.cwd(), 's.yaml');
+      if (fs.existsSync(sPath)) { // 如果有配置文件，则去解析配置文件path
+        const yamlObj = yaml.load(fs.readFileSync(sPath, 'utf-8'));
+        domain = get(yamlObj, 'vars.domain');
+        if (!domain) {
+          throw new Error('检测到当前配置文件中不存在domain ，请按在变量vars 下添加domain属性');
+        }
+      } else {
+        throw new Error('检测到当前没有domain配置，您可以通过-d <domain> 指定');
+      }
+    }
+    if (!domain) { // 如果有配置文件，则去解析配置文件path
+      throw new Error('请输入domain,');
+    }
+    const data = await getToken({ domain });
+    if (data.success) {
+      return get(data, 'data.token', '');
+    }
+    return 'token 获取失败，请检查域名';
   }
 
   /**

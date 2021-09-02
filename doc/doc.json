@@ -56,7 +56,7 @@
 					}
 				},
 				{
-					"id": 36,
+					"id": 39,
 					"name": "client",
 					"kind": 1024,
 					"kindString": "Property",
@@ -80,7 +80,7 @@
 					}
 				},
 				{
-					"id": 37,
+					"id": 40,
 					"name": "inputs",
 					"kind": 1024,
 					"kindString": "Property",
@@ -97,7 +97,7 @@
 					}
 				},
 				{
-					"id": 40,
+					"id": 43,
 					"name": "__doc",
 					"kind": 2048,
 					"kindString": "Method",
@@ -111,14 +111,14 @@
 					],
 					"signatures": [
 						{
-							"id": 41,
+							"id": 44,
 							"name": "__doc",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
 							"parameters": [
 								{
-									"id": 42,
+									"id": 45,
 									"name": "projectName",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -147,7 +147,7 @@
 					}
 				},
 				{
-					"id": 38,
+					"id": 41,
 					"name": "__getBasePath",
 					"kind": 2048,
 					"kindString": "Method",
@@ -161,7 +161,7 @@
 					],
 					"signatures": [
 						{
-							"id": 39,
+							"id": 42,
 							"name": "__getBasePath",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -192,7 +192,7 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 172,
+							"line": 173,
 							"character": 21
 						}
 					],
@@ -235,7 +235,7 @@
 					]
 				},
 				{
-					"id": 33,
+					"id": 36,
 					"name": "deleteApi",
 					"kind": 2048,
 					"kindString": "Method",
@@ -245,13 +245,13 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 270,
+							"line": 308,
 							"character": 24
 						}
 					],
 					"signatures": [
 						{
-							"id": 34,
+							"id": 37,
 							"name": "deleteApi",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -261,7 +261,7 @@
 							},
 							"parameters": [
 								{
-									"id": 35,
+									"id": 38,
 									"name": "__namedParameters",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -286,7 +286,7 @@
 					]
 				},
 				{
-					"id": 21,
+					"id": 24,
 					"name": "deploy",
 					"kind": 2048,
 					"kindString": "Method",
@@ -296,13 +296,13 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 210,
+							"line": 248,
 							"character": 21
 						}
 					],
 					"signatures": [
 						{
-							"id": 22,
+							"id": 25,
 							"name": "deploy",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -313,7 +313,7 @@
 							},
 							"parameters": [
 								{
-									"id": 23,
+									"id": 26,
 									"name": "inputs",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -349,7 +349,7 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 135,
+							"line": 136,
 							"character": 18
 						}
 					],
@@ -392,7 +392,7 @@
 					]
 				},
 				{
-					"id": 27,
+					"id": 30,
 					"name": "getApi",
 					"kind": 2048,
 					"kindString": "Method",
@@ -402,13 +402,13 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 251,
+							"line": 289,
 							"character": 21
 						}
 					],
 					"signatures": [
 						{
-							"id": 28,
+							"id": 31,
 							"name": "getApi",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -418,7 +418,7 @@
 							},
 							"parameters": [
 								{
-									"id": 29,
+									"id": 32,
 									"name": "__namedParameters",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -496,7 +496,7 @@
 					]
 				},
 				{
-					"id": 30,
+					"id": 33,
 					"name": "listApi",
 					"kind": 2048,
 					"kindString": "Method",
@@ -506,13 +506,13 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 261,
+							"line": 299,
 							"character": 22
 						}
 					],
 					"signatures": [
 						{
-							"id": 31,
+							"id": 34,
 							"name": "listApi",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -522,7 +522,7 @@
 							},
 							"parameters": [
 								{
-									"id": 32,
+									"id": 35,
 									"name": "__namedParameters",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -600,7 +600,7 @@
 					]
 				},
 				{
-					"id": 24,
+					"id": 27,
 					"name": "putApi",
 					"kind": 2048,
 					"kindString": "Method",
@@ -610,13 +610,13 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 241,
+							"line": 279,
 							"character": 21
 						}
 					],
 					"signatures": [
 						{
-							"id": 25,
+							"id": 28,
 							"name": "putApi",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -626,7 +626,7 @@
 							},
 							"parameters": [
 								{
-									"id": 26,
+									"id": 29,
 									"name": "__namedParameters",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -709,6 +709,58 @@
 							}
 						}
 					]
+				},
+				{
+					"id": 21,
+					"name": "token",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 210,
+							"character": 20
+						}
+					],
+					"signatures": [
+						{
+							"id": 22,
+							"name": "token",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {},
+							"parameters": [
+								{
+									"id": 23,
+									"name": "inputs",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "\n"
+									},
+									"type": {
+										"type": "reference",
+										"name": "InputProps"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "any"
+									}
+								],
+								"name": "Promise"
+							}
+						}
+					]
 				}
 			],
 			"groups": [
@@ -723,26 +775,27 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						36,
-						37
+						39,
+						40
 					]
 				},
 				{
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						40,
-						38,
+						43,
+						41,
 						18,
-						33,
-						21,
-						15,
-						27,
-						12,
-						30,
-						9,
+						36,
 						24,
-						5
+						15,
+						30,
+						12,
+						33,
+						9,
+						27,
+						5,
+						21
 					]
 				}
 			],
