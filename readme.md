@@ -30,8 +30,9 @@ GET https://httpbin.org/ip
 
 Jamstack有两者使用方式，一种是s命令行方式，另外一种是通过token方式进行API集成。
 
-
 ### s cli 方式
+
+KV的操作主要包括put/get/delete和list，使用方法如下：
 
 ```
 s cli kv put <key> <value> -d <domain> // 创建/更新<domain>下的 kv,value 可以指定为文件
@@ -40,15 +41,29 @@ s cli kv delete <key> -d <domain> // 删除 <domain>下的 kv,value 可以指定
 s cli kv list -d <domain> // 获取<domain>下的 kv
 ```
 
-### REST API集成
-使用REST API操作KV，你首先需要获得一个token，用于操作KV，对应的命令行为 `s cli kv token`   
+如果当前目录下的s.yaml文件已经包含如下的域名设置，你就不用添加`-d domain`选项。
 
-接下来你就可以使用标准的HTTP方式进行KV操作，样例如下：
+```yaml
+edition: 1.0.0
+vars:
+  domain: example.resume.net.cn
+```
+
+KV的put操作样例如下： 
+
+* 基于命令行字符串上传KV： `s cli kv put profile.json '{"id": 1}' `
+* 基于文件上传KV： `s cli kv put profile.json ./profile.json`
+
+
+### REST API集成
+使用REST API操作KV，你首先需要获得一个token，对应的命令行为 `s cli kv token`。 
+
+接下来你就可以使用标准的HTTP方式度KV进行操作，`Authorization`HTTP头会包含token信息，样例如下：
 
 ```http request
 POST https://s.devsapp.cn/kv/put/example.resume.net.cn/demo.json
 Content-Type: application/json
-Authorization: bear your_token_here
+Authorization: Bear your_token_here
 
 {"id": 1, "name": "KV Front" }
 ```
@@ -58,7 +73,7 @@ Authorization: bear your_token_here
 ```shell
 curl -X POST --location "https://s.devsapp.cn/kv/put/example.resume.net.cn/demo.json" \
 -H "Content-Type: application/json" \
--H "Authorization: bear your_token_here" \
+-H "Authorization: Bear your_token_here" \
 -d @demo.json
 ```
 
