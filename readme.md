@@ -1,11 +1,11 @@
 Jamstack KV组件说明
 =================
 
-针对Jamstack场景提供KV的功能。
+针对Jamstack项目提供对应的KV的功能，扩展静态站点的动态功能。
 
 # 使用场景
 
-为Jamstack静态站点提供基于KV的动态特性，主要包括KV Front和KV HTTP
+为Jamstack静态站点提供基于KV的动态特性，主要包括KV Front和KV HTTP两部分功能。
 
 ### KV Front
 
