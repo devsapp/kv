@@ -58,31 +58,75 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<a href="#组件说明" id="组件说明" style="color: inherit; text-decoration: none;">
-					<h2>组件说明</h2>
+				<a href="#jamstack-kv组件说明" id="jamstack-kv组件说明" style="color: inherit; text-decoration: none;">
+					<h1>Jamstack KV组件说明</h1>
 				</a>
-				<p>针对jamstack 场景进行kv 操作</p>
+				<p>针对Jamstack项目提供对应的KV的功能，扩展静态站点的动态功能。</p>
 				<a href="#使用场景" id="使用场景" style="color: inherit; text-decoration: none;">
-					<h2>使用场景</h2>
+					<h1>使用场景</h1>
 				</a>
+				<p>为Jamstack静态站点提供基于KV的动态特性，主要包括KV Front和KV HTTP两部分功能。</p>
+				<a href="#kv-front" id="kv-front" style="color: inherit; text-decoration: none;">
+					<h3>KV Front</h3>
+				</a>
+				<p>KV Front主要是静态站点提供KV支持，方便后端更新KV数据，浏览器端访问再访问这些KV数据，从而实现静态站点的动态特性。
+				此外KV Front也可以作为Jamstack站点的临时数据中转，为编译期提供数据支持。</p>
+				<p>KV Front通过 <code>https://example.resume.net.cn/~kv/exchange_rate.json</code> 进行访问。  </p>
+				<a href="#kv-http" id="kv-http" style="color: inherit; text-decoration: none;">
+					<h3>KV HTTP</h3>
+				</a>
+				<p>KV HTTP是一种特殊的HTTP处理方式，由Serverless平台提供对应的HTTP请求转发。 </p>
+				<p>首先你需要创建一个对应的HTTP文件，如 httpbin-ip.http文件，内容如下： </p>
+				<pre><code><span style="color: #0070C1">GET</span><span style="color: #000000"> https:</span><span style="color: #008000">//httpbin.org/ip</span>
+</code></pre>
+				<p>接下来你就可以通过 <code>https://example.resume.net.cn/~kv/httpbin-demo.http</code> 访问，就可以获得上游HTTP服务的内容响应。</p>
 				<a href="#具体用法" id="具体用法" style="color: inherit; text-decoration: none;">
-					<h2>具体用法</h2>
+					<h1>具体用法</h1>
 				</a>
+				<p>Jamstack有两者使用方式，一种是s命令行方式，另外一种是通过token方式进行API集成。</p>
 				<a href="#s-cli-方式" id="s-cli-方式" style="color: inherit; text-decoration: none;">
 					<h3>s cli 方式</h3>
 				</a>
-				<pre><code><span style="color: #001080">s</span><span style="color: #000000"> </span><span style="color: #001080">cli</span><span style="color: #000000"> </span><span style="color: #001080">kv</span><span style="color: #000000"> </span><span style="color: #001080">list</span><span style="color: #000000"> -</span><span style="color: #001080">d</span><span style="color: #000000"> &lt;</span><span style="color: #001080">domain</span><span style="color: #000000">&gt; </span><span style="color: #008000">// 获取domain 下的 kv</span>
-
+				<p>KV的操作主要包括put/get/delete和list，使用方法如下：</p>
+				<pre><code><span style="color: #001080">s</span><span style="color: #000000"> </span><span style="color: #001080">cli</span><span style="color: #000000"> </span><span style="color: #001080">kv</span><span style="color: #000000"> </span><span style="color: #001080">put</span><span style="color: #000000"> &lt;</span><span style="color: #001080">key</span><span style="color: #000000">&gt; &lt;</span><span style="color: #267F99">value</span><span style="color: #000000">&gt; -</span><span style="color: #001080">d</span><span style="color: #000000"> &lt;</span><span style="color: #001080">domain</span><span style="color: #000000">&gt; </span><span style="color: #008000">// 创建/更新&lt;domain&gt;下的 kv,value 可以指定为文件</span>
+<span style="color: #001080">s</span><span style="color: #000000"> </span><span style="color: #001080">cli</span><span style="color: #000000"> </span><span style="color: #001080">kv</span><span style="color: #000000"> </span><span style="color: #001080">get</span><span style="color: #000000"> &lt;</span><span style="color: #001080">key</span><span style="color: #000000">&gt; -</span><span style="color: #001080">d</span><span style="color: #000000"> &lt;</span><span style="color: #001080">domain</span><span style="color: #000000">&gt; </span><span style="color: #008000">// 获取 &lt;domain&gt;下的 kv,value 可以指定为文件</span>
+<span style="color: #001080">s</span><span style="color: #000000"> </span><span style="color: #001080">cli</span><span style="color: #000000"> </span><span style="color: #001080">kv</span><span style="color: #000000"> </span><span style="color: #0000FF">delete</span><span style="color: #000000"> &lt;</span><span style="color: #001080">key</span><span style="color: #000000">&gt; -</span><span style="color: #001080">d</span><span style="color: #000000"> &lt;</span><span style="color: #001080">domain</span><span style="color: #000000">&gt; </span><span style="color: #008000">// 删除 &lt;domain&gt;下的 kv,value 可以指定为文件</span>
+<span style="color: #001080">s</span><span style="color: #000000"> </span><span style="color: #001080">cli</span><span style="color: #000000"> </span><span style="color: #001080">kv</span><span style="color: #000000"> </span><span style="color: #001080">list</span><span style="color: #000000"> -</span><span style="color: #001080">d</span><span style="color: #000000"> &lt;</span><span style="color: #001080">domain</span><span style="color: #000000">&gt; </span><span style="color: #008000">// 获取&lt;domain&gt;下的 kv</span>
 </code></pre>
-				<pre><code><span style="color: #001080">s</span><span style="color: #000000"> </span><span style="color: #001080">cli</span><span style="color: #000000"> </span><span style="color: #001080">kv</span><span style="color: #000000"> </span><span style="color: #001080">put</span><span style="color: #000000"> &lt;</span><span style="color: #001080">key</span><span style="color: #000000">&gt; &lt;</span><span style="color: #267F99">value</span><span style="color: #000000">&gt; -</span><span style="color: #001080">d</span><span style="color: #000000"> &lt;</span><span style="color: #001080">domain</span><span style="color: #000000">&gt; </span><span style="color: #008000">// 设置 &lt;domain&gt; 下的 kv,value 可以指定为文件</span>
-
+				<p>如果当前目录下的s.yaml文件已经包含如下的域名设置，你就不用添加<code>-d domain</code>选项。</p>
+				<pre><code class="language-yaml"><span style="color: #800000">edition</span><span style="color: #000000">: </span><span style="color: #098658">1.0.0</span>
+<span style="color: #800000">vars</span><span style="color: #000000">:</span>
+<span style="color: #000000">  </span><span style="color: #800000">domain</span><span style="color: #000000">: </span><span style="color: #0000FF">example.resume.net.cn</span>
 </code></pre>
-				<pre><code><span style="color: #001080">s</span><span style="color: #000000"> </span><span style="color: #001080">cli</span><span style="color: #000000"> </span><span style="color: #001080">kv</span><span style="color: #000000"> </span><span style="color: #001080">get</span><span style="color: #000000"> &lt;</span><span style="color: #001080">key</span><span style="color: #000000">&gt; -</span><span style="color: #001080">d</span><span style="color: #000000"> &lt;</span><span style="color: #001080">domain</span><span style="color: #000000">&gt; </span><span style="color: #008000">// 获取 &lt;domain&gt;下的 kv,value 可以指定为文件</span>
+				<p>KV的put操作样例如下： </p>
+				<ul>
+					<li>基于命令行字符串上传KV： <code>s cli kv put profile.json &#39;{&quot;id&quot;: 1}&#39; </code></li>
+					<li>基于文件上传KV： <code>s cli kv put profile.json ./profile.json</code></li>
+				</ul>
+				<a href="#rest-api集成" id="rest-api集成" style="color: inherit; text-decoration: none;">
+					<h3>REST API集成</h3>
+				</a>
+				<p>使用REST API操作KV，你首先需要获得一个token，对应的命令行为 <code>s cli kv token</code>。 </p>
+				<p>接下来你就可以使用标准的HTTP方式度KV进行操作，<code>Authorization</code>HTTP头会包含token信息，样例如下：</p>
+				<pre><code><span style="color: #0070C1">POST</span><span style="color: #000000"> https:</span><span style="color: #008000">//s.devsapp.cn/kv/put/example.resume.net.cn/demo.json</span>
+<span style="color: #001080">Content</span><span style="color: #000000">-Type: </span><span style="color: #001080">application</span><span style="color: #000000">/</span><span style="color: #001080">json</span>
+<span style="color: #000000">Authorization: </span><span style="color: #001080">Bear</span><span style="color: #000000"> </span><span style="color: #001080">your_token_here</span>
 
+<span style="color: #000000">{</span><span style="color: #A31515">&quot;id&quot;</span><span style="color: #000000">: </span><span style="color: #098658">1</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;name&quot;</span><span style="color: #000000">: </span><span style="color: #A31515">&quot;KV Front&quot;</span><span style="color: #000000"> }</span>
 </code></pre>
-				<pre><code><span style="color: #001080">s</span><span style="color: #000000"> </span><span style="color: #001080">cli</span><span style="color: #000000"> </span><span style="color: #001080">kv</span><span style="color: #000000"> </span><span style="color: #0000FF">delete</span><span style="color: #000000"> &lt;</span><span style="color: #001080">key</span><span style="color: #000000">&gt; -</span><span style="color: #001080">d</span><span style="color: #000000"> &lt;</span><span style="color: #001080">domain</span><span style="color: #000000">&gt; </span><span style="color: #008000">// 删除 &lt;domain&gt;下的 kv,value 可以指定为文件</span>
-
+				<p>对应的curl命令如下： </p>
+				<pre><code class="language-shell"><span style="color: #000000">curl -X POST --location </span><span style="color: #A31515">&quot;https://s.devsapp.cn/kv/put/example.resume.net.cn/demo.json&quot;</span><span style="color: #000000"> \</span>
+<span style="color: #000000">-H </span><span style="color: #A31515">&quot;Content-Type: application/json&quot;</span><span style="color: #000000"> \</span>
+<span style="color: #000000">-H </span><span style="color: #A31515">&quot;Authorization: Bear your_token_here&quot;</span><span style="color: #000000"> \</span>
+<span style="color: #000000">-d @demo.json</span>
 </code></pre>
+				<p>KV对应的API列表如下： </p>
+				<ul>
+					<li>POST /kv/put/{domain}/{kv_file_name}: 创建或者更新KV</li>
+					<li>GET /kv/get/{domain}/{kv_file_name}: 获取KV的信息</li>
+					<li>POST /kv/delete/{domain}/{kv_file_name}: 删除KV</li>
+					<li>GET /kv/keys/{domain}/{page:0}:  列出域名下的KV的名称列表，每页50个</li>
+				</ul>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">

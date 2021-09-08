@@ -31,7 +31,7 @@ export default class ComponentDemo extends BaseComponent {
      *
      * @param inputs
      */
-    token(inputs: InputProps): Promise<any>;
+    token(inputs: InputProps): Promise<string>;
     /**
      * 配合配置文件进行上传
      * @param inputs
@@ -40,7 +40,6 @@ export default class ComponentDemo extends BaseComponent {
     deploy(inputs: InputProps): Promise<string>;
     /**
      * api 主动创建key value
-     * @param param0
      */
     putApi({ domain, key, value, type, credentials }: {
         domain: any;
@@ -50,26 +49,23 @@ export default class ComponentDemo extends BaseComponent {
         credentials: any;
     }): Promise<any>;
     /**
-    * api 获取具体的key
-    * @param param0
-    */
+     * api 获取具体的key
+     */
     getApi({ domain, key, credentials }: {
         domain: any;
         key: any;
         credentials: any;
     }): Promise<any>;
     /**
-  * api 查看key 列表
-  * @param param0
-  */
+     * api 查看key 列表
+     */
     listApi({ domain, credentials }: {
         domain: any;
         credentials: any;
     }): Promise<any>;
     /**
-    * api 主动删除key value
-    * @param param0
-    */
+     * api 主动删除key value
+     */
     deleteApi({ domain, key, credentials }: {
         domain: any;
         key: any;
