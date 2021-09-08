@@ -60,7 +60,7 @@ KV的put操作样例如下：
 
 接下来你就可以使用标准的HTTP方式度KV进行操作，`Authorization`HTTP头会包含token信息，样例如下：
 
-```http request
+```
 POST https://s.devsapp.cn/kv/put/example.resume.net.cn/demo.json
 Content-Type: application/json
 Authorization: Bear your_token_here
