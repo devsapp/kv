@@ -79,7 +79,7 @@ curl -X POST --location "https://s.devsapp.cn/kv/put/example.resume.net.cn/demo.
 
 KV对应的API列表如下： 
 
-* POST /kv/put/{domain}/{kv_file_name}: 创建或者更新KV
+* POST /kv/put/{domain}/{kv_file_name}: 创建或者更新KV, HTTP Body为KV的value值
 * GET /kv/get/{domain}/{kv_file_name}: 获取KV的信息
 * POST /kv/delete/{domain}/{kv_file_name}: 删除KV
 * GET /kv/keys/{domain}/{page:0}:  列出域名下的KV的名称列表，每页50个
