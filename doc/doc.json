@@ -19,6 +19,13 @@
 					"kind": 512,
 					"kindString": "Constructor",
 					"flags": {},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 43,
+							"character": 2
+						}
+					],
 					"signatures": [
 						{
 							"id": 3,
@@ -66,8 +73,8 @@
 					"sources": [
 						{
 							"fileName": "common/base.ts",
-							"line": 15,
-							"character": 20
+							"line": 14,
+							"character": 12
 						}
 					],
 					"type": {
@@ -106,7 +113,7 @@
 						{
 							"fileName": "common/base.ts",
 							"line": 40,
-							"character": 9
+							"character": 2
 						}
 					],
 					"signatures": [
@@ -156,7 +163,7 @@
 						{
 							"fileName": "common/base.ts",
 							"line": 27,
-							"character": 17
+							"character": 2
 						}
 					],
 					"signatures": [
@@ -192,8 +199,8 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 129,
-							"character": 21
+							"line": 130,
+							"character": 15
 						}
 					],
 					"signatures": [
@@ -245,8 +252,8 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 220,
-							"character": 24
+							"line": 221,
+							"character": 15
 						}
 					],
 					"signatures": [
@@ -296,8 +303,8 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 164,
-							"character": 21
+							"line": 165,
+							"character": 15
 						}
 					],
 					"signatures": [
@@ -349,8 +356,8 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 109,
-							"character": 18
+							"line": 110,
+							"character": 15
 						}
 					],
 					"signatures": [
@@ -402,8 +409,8 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 202,
-							"character": 21
+							"line": 203,
+							"character": 15
 						}
 					],
 					"signatures": [
@@ -453,8 +460,8 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 93,
-							"character": 19
+							"line": 94,
+							"character": 15
 						}
 					],
 					"signatures": [
@@ -506,8 +513,8 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 211,
-							"character": 22
+							"line": 212,
+							"character": 15
 						}
 					],
 					"signatures": [
@@ -557,8 +564,8 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 63,
-							"character": 18
+							"line": 64,
+							"character": 15
 						}
 					],
 					"signatures": [
@@ -610,8 +617,8 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 193,
-							"character": 21
+							"line": 194,
+							"character": 15
 						}
 					],
 					"signatures": [
@@ -661,8 +668,8 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 46,
-							"character": 22
+							"line": 47,
+							"character": 16
 						}
 					],
 					"signatures": [
@@ -721,8 +728,8 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 147,
-							"character": 20
+							"line": 148,
+							"character": 15
 						}
 					],
 					"signatures": [
@@ -802,8 +809,8 @@
 			"sources": [
 				{
 					"fileName": "index.ts",
-					"line": 41,
-					"character": 34
+					"line": 42,
+					"character": 21
 				}
 			],
 			"extendedTypes": [
