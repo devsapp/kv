@@ -7,7 +7,8 @@ import { getCredential } from '@serverless-devs/core';
 import BaseComponent from './common/base';
 // import logger from './common/logger';
 import { ICredentials, InputProps } from './common/entity';
-import get from 'lodash.get';
+import _ from 'lodash';
+
 import { deleteKeyValue, getKeyValue, getToken, listKeyValue, putKeyValue } from './common/request';
 
 function getKeyContentType(key: string) {
@@ -27,7 +28,7 @@ function getDomain(othersParams: string[]) {
     if (fs.existsSync(sPath)) {
       // 如果有s.yaml配置文件，则去解析配置文件path
       const yamlObj = yaml.load(fs.readFileSync(sPath, 'utf-8'));
-      domain = get(yamlObj, 'vars.domain');
+      domain = _.get(yamlObj, 'vars.domain');
       if (!domain) {
         throw new Error('检测到当前配置文件s.yaml中不存在domain ，请在vars元素下添加domain属性');
       }
@@ -97,7 +98,7 @@ export default class ComponentDemo extends BaseComponent {
     const othersParams = argsArr.slice(2);
     let domain = getDomain(othersParams);
     const result = await listKeyValue({ domain });
-    const keys = get(result, 'data.keys');
+    const keys = _.get(result, 'data.keys');
     return `KV列表:\n ${keys}`;
   }
 
@@ -117,7 +118,7 @@ export default class ComponentDemo extends BaseComponent {
     const othersParams = argsArr.slice(2);
     let domain = getDomain(othersParams);
     const result = await getKeyValue({ domain, key });
-    const value = get(result, 'data.value');
+    const value = _.get(result, 'data.value');
     return `${key}的值为: \n${value}`;
   }
 
@@ -150,7 +151,7 @@ export default class ComponentDemo extends BaseComponent {
     const domain = getDomain(argsObj);
     const data = await getToken({ domain });
     if (data.success) {
-      const token = get(data, 'data.token', '');
+      const token = _.get(data, 'data.token', '');
       return `你的KV Token为： ${token}  请妥善保存！`;
     }
     return 'KV Token 获取失败，请检查域名';
